@@ -10,5 +10,14 @@ Get molvis-tools (which has JSMol), install-gamess, and cloud9-vnc.
 
 Run the installation script for cloud9-vnc.
 
-Get the gamess-built tarball built by your institution or department. Provision with Cloud9file and then install GAMESS with script.
+    $ cloud9-vnc/install.sh
+
+Get the `gamess-built` tarball built by your institution or department. Move it into the `install-gamess` directory. Provision with Cloud9file and then install GAMESS with script. Once tests are passed, remove repository to save space, if desired.
+
+    $ cd install-gamess
+    $ ./Cloud9file
+    $ ./install-gamess.sh
+    $ cd ..
+    $ rm -rf install-gamess
+
 
