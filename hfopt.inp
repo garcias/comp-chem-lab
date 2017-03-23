@@ -1,0 +1,25 @@
+!   Template file for geometry optimization with Hartree-Fock method
+!   Default basis: 3-21G*
+!   Default molecule: formaldehyde CH2O
+!   Default memory: 60 MWORDS (480 MB) 
+!
+ $CONTRL SCFTYP=RHF MAXIT=99
+         MOLPLT=.FALSE. PLTORB=.FALSE. 
+         COORD=UNIQUE 
+         RUNTYP=OPTIMIZE
+         ICHARG=0 MULT=1 $END
+ $BASIS GBASIS=N21 NGAUSS=3 NDFUNC=1 $END
+ $STATPT OPTTOL=0.0005 NSTEP=99 $END
+ $SYSTEM TIMLIM=7200 MWORDS=60 $END
+ $SCF DIRSCF=.TRUE. $END
+ $GUESS  GUESS=HUCKEL  $END
+ $CONTRL COORD=CART UNITS=ANGS $END
+
+ $DATA
+string
+C1
+C      6.0     -0.0010800000    0.0291700000   -0.0078100000 
+O      8.0     -0.0479000000    1.2100200000   -0.3184200000 
+H      1.0     -0.9056200000   -0.5557200000    0.2185500000 
+H      1.0      0.9485400000   -0.5226200000    0.0648600000 
+ $END

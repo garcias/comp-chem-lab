@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		body {
+			background-color: #888888;
+		}
+	</style>
+	<meta charset="utf-8">
+	<title>JSmol -- Jmol/HTML5 Demo</title>
+	<script type="text/javascript" src="./jsmol/JSmol.min.js"></script>
+
+	<script type="text/javascript">
+		
+		// path to file you want to load
+		// molFile = "./jsmol/data/caffeine.mol"
+		molFile = "./current"
+
+		Jmol._isAsync = false;
+		
+		var jmolApplet0; // set up in HTML table, below
+		
+		var s = document.location.search;
+		
+		Jmol._debugCode = (s.indexOf("debugcode") >= 0);
+		
+		jmol_isReady = function(applet) {
+			document.title = (applet._id + " - Jmol " + Jmol.___JmolVersion)
+			Jmol._getElement(applet, "appletdiv").style.border="1px solid blue"
+		}		
+
+		var Info = {
+			width: 1280,
+			height:840,
+			debug: false,
+			color: "0xE0D0C0", //solarized, replace with 0x888888 for neutral gray
+			addSelectionOptions: false, // creates search console
+			use: "HTML5",   // JAVA HTML5 WEBGL are all options
+					j2sPath: "./jsmol/j2s", // this needs to point to where the j2s directory is.
+					jarPath: "./jsmol/java",// this needs to point to where the java directory is.
+			jarFile: "JmolAppletSigned.jar",
+			isSigned: true,
+					script: "set zoomlarge false;set antialiasDisplay;load " + molFile + ";center",
+			//	serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+			serverURL: "./jsmol/php/jsmol.php",
+			readyFunction: jmol_isReady,
+			disableJ2SLoadMonitor: true,
+	  	disableInitialConsole: true,
+		  allowJavaScript: true,
+			//defaultModel: "$dopamine",
+			//console: "none", // default will be jmolApplet0_infodiv, but you can designate another div here or "none"
+		}
+
+		$(document).ready(function() {
+			  $("#appdiv").html(Jmol.getAppletHtml("jmolApplet0", Info))
+		})
+		var lastPrompt = 0;
+	</script>
+</head>
+
+
+<body>
+	<table width=600 cellpadding=0>
+		<tr>
+			<td valign="top">
+				<div id="appdiv"></div>	
+				<!-- the actual JSmol view -->
+			</td>
+		</tr>
+	</table>
+</body>
+
+</html>
