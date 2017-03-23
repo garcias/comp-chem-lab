@@ -31,8 +31,9 @@ The command to convert chemical data formats is `obabel`. It requires you to spe
 
 ## How to use Jupyter
 
-Jupyter is a web app that records and runs data analysis commands, and displays output as a nicley formatted web page. It can process Julia, Python, and R code (hence, *Ju-Pyt-R*). To start the web app, run the command:
+Jupyter is a web app that records and runs data analysis commands, and displays output as a nicley formatted web page. It can process Julia, Python, and R code (hence, *Ju-Pyt-R*). To start the web app, first activate the virtual environment, then run the `notebook` command:
 
+    $ . extras/venv/bin/activate
     $ jupyter notebook --ip $IP --port $PORT --no-browser
     
 It will display a URL in the output. Click on the URL and select *Open* to launch the web app in a dedciated browser window. 
