@@ -1,5 +1,9 @@
 # comp-chem-lab
 
+## what is this for?
+
+Intended use is an instructor creating a team workspace on Cloud9, for students can clone. Students can therefore start with workspace that already has installed GAMESS, Jmol/JSMol, OpenBabel, and optionally Numpy/Jupyter/Pandas/R/Seaborn.
+
 ## Getting started
 
 Get molvis-tools (which has JSMol), install-gamess, and cloud9-vnc.
@@ -20,4 +24,8 @@ Get the `gamess-built` tarball built by your institution or department. Move it 
     $ cd ..
     $ rm -rf install-gamess
 
+## Todo
 
+- [ ] Instructions for minimal install of Jupyter/Pandas/Seaborn
+- [ ] Instructions for installing R
+- [ ] Script for Miniconda install (requires > 2GB workspace)
