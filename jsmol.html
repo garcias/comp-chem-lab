@@ -8,12 +8,12 @@
 	</style>
 	<meta charset="utf-8">
 	<title>JSmol -- Jmol/HTML5 Demo</title>
-	<script type="text/javascript" src="./jsmol/JSmol.min.js"></script>
+	<script type="text/javascript" src="./molvis-tools/jsmol/JSmol.min.js"></script>
 
 	<script type="text/javascript">
 		
 		// path to file you want to load
-		// molFile = "./jsmol/data/caffeine.mol"
+		// molFile = "./molvis-tools/jsmol/data/caffeine.mol"
 		molFile = "./current"
 
 		Jmol._isAsync = false;
@@ -36,13 +36,13 @@
 			color: "0xE0D0C0", //solarized, replace with 0x888888 for neutral gray
 			addSelectionOptions: false, // creates search console
 			use: "HTML5",   // JAVA HTML5 WEBGL are all options
-					j2sPath: "./jsmol/j2s", // this needs to point to where the j2s directory is.
-					jarPath: "./jsmol/java",// this needs to point to where the java directory is.
+					j2sPath: "./molvis-tools/jsmol/j2s", // this needs to point to where the j2s directory is.
+					jarPath: "./molvis-tools/jsmol/java",// this needs to point to where the java directory is.
 			jarFile: "JmolAppletSigned.jar",
 			isSigned: true,
 					script: "set zoomlarge false;set antialiasDisplay;load " + molFile + ";center",
 			//	serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
-			serverURL: "./jsmol/php/jsmol.php",
+			serverURL: "./molvis-tools/jsmol/php/jsmol.php",
 			readyFunction: jmol_isReady,
 			disableJ2SLoadMonitor: true,
 	  	disableInitialConsole: true,
