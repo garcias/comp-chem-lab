@@ -41,6 +41,6 @@ It will display a URL in the output. Click on the URL and select *Open* to launc
 
 ## How to use Python or R interpreters
 
-If Python is installed, you can use the `python` or `ipython` command to start an interactive Python shell. If you have a Python script in a file named `script.py`, you can run it in Python using `python script.py`. Any output will print to the console.
+You can use the `python` or `ipython` command to start an interactive Python shell. If you have a Python script in a file named `script.py`, you can run it in Python using `python script.py`. Any output will print to the console.
 
-If R is installed, you can use the `R` command to start an interactive R shell. If you have an R script in a file named `script.R`, you can run it in R using `Rscript script.R`.  Any output will print to the console.
+If you installed R, you can use the `R` command to start an interactive R shell. If you have an R script in a file named `script.R`, you can run it in R using `Rscript script.R`.  Any output will print to the console.

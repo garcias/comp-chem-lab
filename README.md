@@ -36,7 +36,7 @@ Cloud9-VNC allows you to run a lightwight desktop environment on Cloud9 with acc
 
 **Matplotlib** is a plotting library for Python. It can do standard plots easily and is simple to customize, but requires extra programming for more complex, multivariate data. **Seaborn** is more appropriate for analyzing multivariable relationships, but is more difficult to customize.
 
-To install Python data tools, run the `install-python-tools.sh` script. It installs in a virtual environment, so activate the environment before to make these tools available.
+To install Python data tools, run the `install-python-tools.sh` script. It installs in a virtual environment, so activate the environment after installation to make these tools available.
 
     $ optional/install-python-tools.sh
     $ optional/venv/bin/activate
