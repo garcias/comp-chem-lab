@@ -6,9 +6,9 @@ This workspace has JSMol, GAMESS, and OpenBabel installed already.
 
 The file `jsmol.html` defines a web app that you can open in a browser window and visualize molecular models. To run the app in Cloud9, open `jsmol.html` and click *Run > Run with > Apache*. (The keyboard shortcut on Macs is `ctrl-cmd-return`; check *Run* menu for other operating systems.) This will cause a tab to appear in the console, saying:
 
-> Starting Apache httpd, serving https://{{ *user name* }}.c9users.io/jsmol.html.
+> Starting Apache httpd, serving https://\<*user name*\>.c9users.io/jsmol.html.
 
-Click on the URL and select *Open*, which will cause your browser to open a new window dedicated to the web app.
+Click on the URL and select *Open*, which will cause your browser to open a dedicated window for the web app.
 
 The web app is written to load any chemical data in the file named `current`. To load new data, simply copy it over `current`, and reload the page containing the web app.
 
@@ -38,11 +38,11 @@ If you installed the Python data tools, you can run Jupyter. Jupyter is a web ap
     $ . venv/bin/activate
     $ jupyter notebook --ip $IP --port $PORT --no-browser
     
-It will display a URL in the output. Click on the URL and select *Open* to launch the web app in a dedicated browser window. From the web app you can create a notebook for Python or R.
+It will display a URL in the output. Click on the URL and select *Open* to launch the web app in a dedicated browser window. From there you can create a notebook for Python or R.
 
 
 ## How to use Python or R interpreters
 
 You can use the `python` or `ipython` command to start an interactive Python shell. If you have a Python script in a file named `script.py`, you can run it in Python using `python script.py`. Any output will print to the console.
 
-If you installed R, you can use the `R` command to start an interactive R shell. If you have an R script in a file named `script.R`, you can run it in R using `Rscript script.R`.  Any output will print to the console.
+If you installed R (see `README.md`), you can use the `R` command to start an interactive R shell. If you have an R script in a file named `script.R`, you can run it in R using `Rscript script.R`.  Any output will print to the console.
