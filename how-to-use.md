@@ -1,5 +1,7 @@
 # How to use this workspace
 
+This workspace has JSMol, GAMESS, and OpenBabel installed already. 
+
 ## How to use JSMol
 
 The file `jsmol.html` defines a web app that you can open in a browser window and visualize molecular models. To run the app in Cloud9, open `jsmol.html` and click *Run > Run with > Apache*. (The keyboard shortcut on Macs is `ctrl-cmd-return`; check *Run* menu for other operating systems.) This will cause a tab to appear in the console, saying:
@@ -31,7 +33,7 @@ The command to convert chemical data formats is `obabel`. It requires you to spe
 
 ## How to use Jupyter
 
-Jupyter is a web app that records and runs data analysis commands, and displays output as a nicely formatted web page. It can process Julia, Python, and R code (hence, *Ju-Pyt-R*). To start the web app, first activate the virtual environment, then run the `notebook` command:
+If you installed the Python data tools, you can run Jupyter. Jupyter is a web app that records and runs data analysis commands, and displays output as a nicely formatted web page. It can process Julia, Python, and R code (hence, *Ju-Pyt-R*). To start the web app, first activate the virtual environment, then run the `notebook` command:
 
     $ . venv/bin/activate
     $ jupyter notebook --ip $IP --port $PORT --no-browser
