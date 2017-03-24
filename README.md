@@ -38,20 +38,20 @@ Cloud9-VNC allows you to run a lightwight desktop environment on Cloud9 with acc
 
 To install Python data tools, run the `install-python-tools.sh` script. It installs in a virtual environment, so activate the environment after installation to make these tools available.
 
-    $ optional/install-python-tools.sh
-    $ optional/venv/bin/activate
+    $ . optional/install-python-tools.sh
+    $ . optional/venv/bin/activate
 
 ### R
 
 **R** is a statistical scripting language. Although it is fairly domain-specific, it boasts an unparalleled catalog of open-source packages maintained by a dedicated community of users and developers. To install R, run the following script.
 
-    $ optional/install-R.sh
+    $ . optional/install-R.sh
 
 ### R kernel for Jupyter
 
 To make R visible to Jupyter, activate the virtual environment and start R
 
-    $ optional/venv/bin/activate
+    $ . optional/venv/bin/activate
     $ R
 
 Install `devtools` and several other libraries. Use `devtools` to install `IRkernel` and then run `installspec`.
