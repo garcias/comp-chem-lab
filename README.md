@@ -2,16 +2,16 @@
 
 ## What is this for?
 
-Intended use is an instructor creating a team workspace on Cloud9, for students can clone. Students can therefore start with workspace that already has installed GAMESS, Jmol/JSMol, OpenBabel, and optionally Numpy/Jupyter/Pandas/R/Seaborn.
+Intended use is an instructor creating a team workspace on Cloud9, for students to clone. Students can therefore start with workspace that already has installed GAMESS, Jmol/JSMol, OpenBabel, and optionally Jupyter/Pandas/R/Seaborn.
 
 ## Installing required tools
 
-Get molvis-tools (which has JSMol), install-gamess, and cloud9-vnc.
+Starting in `workspace` directory, get `molvis-tools` (which has JSMol) and `install-gamess`.
 
     $ git clone https://github.com/garcias/molvis-tools.git
     $ git clone https://github.com/garcias/install-gamess.git
 
-Get the `gamess-built` tarball built by your institution or department. Move it into the `install-gamess` directory. Provision with Cloud9file and then install GAMESS with script. Once tests are passed, remove repository to save space, if desired.
+Get the `gamess-built` tarball built by your institution or department. Move it into the `install-gamess` directory. Provision with `Cloud9file` and then install GAMESS with script. Once tests are passed, remove repository to save space, if desired.
 
     $ cd install-gamess
     $ ./Cloud9file
@@ -20,8 +20,6 @@ Get the `gamess-built` tarball built by your institution or department. Move it 
     $ rm -rf install-gamess
 
 ## Installing optional tools
-
-Change into the `optional/` directory before installing these tools.
 
 ### Cloud9-VNC
 
@@ -36,24 +34,24 @@ Cloud9-VNC allows you to run a lightwight desktop environment on Cloud9 with acc
 
 **Pandas** is a data management library for Python and implements a DataFrame structure. Pandas DataFrames can sort, group, filter, and summarize data.
 
-**MatPlotLib** is a plotting library for Python. It can do standard plots easily and is easy to customize, but requires extra programming for more complex, multivariate data. **Seaborn** is more appropriate for analyzing multivariable relationships, but is more difficult to customize.
+**Matplotlib** is a plotting library for Python. It can do standard plots easily and is simple to customize, but requires extra programming for more complex, multivariate data. **Seaborn** is more appropriate for analyzing multivariable relationships, but is more difficult to customize.
 
 To install Python data tools, run the `install-python-tools.sh` script. It installs in a virtual environment, so activate the environment before to make these tools available.
 
-    $ ./install-python-tools.sh
-    $ ./venv/bin/activate
+    $ optional/install-python-tools.sh
+    $ optional/venv/bin/activate
 
 ### R
 
 **R** is a statistical scripting language. Although it is fairly domain-specific, it boasts an unparalleled catalog of open-source packages maintained by a dedicated community of users and developers. To install R, run the following script.
 
-    $ ./install-R.sh
+    $ optional/install-R.sh
 
 ### R kernel for Jupyter
 
 To make R visible to Jupyter, activate the virtual environment and start R
 
-    $ ./venv/bin/activate
+    $ optional/venv/bin/activate
     $ R
 
 Install `devtools` and several other libraries. Use `devtools` to install `IRkernel` and then run `installspec`.
