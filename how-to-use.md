@@ -4,7 +4,7 @@
 
 The file `jsmol.html` defines a web app that you can open in a browser window and visualize molecular models. To run the app in Cloud9, open `jsmol.html` and click *Run > Run with > Apache*. (The keyboard shortcut on Macs is `ctrl-cmd-return`; check *Run* menu for other operating systems.) This will cause a tab to appear in the console, saying:
 
-> Starting Apache httpd, serving https://{{ *user name* }}.c9users.io/jsmol.html.
+> Starting Apache httpd, serving https://\<*user name*\>.c9users.io/jsmol.html.
 
 Click on the URL and select *Open*, which will cause your browser to open a new window dedicated to the web app.
 
