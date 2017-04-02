@@ -12,6 +12,12 @@ Click on the URL and select *Open*, which will cause your browser to open a dedi
 
 The web app is written to load any chemical data in the file named `current`. To load new data, simply copy it over `current`, and reload the page containing the web app.
 
+<ins> **Update.** The web app now includes a Jmol console to the right of the canvas. The top is an input window, which you can type Jmol commands into. The bottom is an output window. You can type the following commands in it: </ins>
+
+- `load <filename>`: loads model from data in *filename*, which may be .mol, .inp, or .out.
+- `console clear`: clears the output window (useful just before extracting MOL data)
+- `write mol`: extracts coordinates as MOL data and prints to output window.
+
 
 ## How to use GAMESS
 
