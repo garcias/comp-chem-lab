@@ -30,7 +30,7 @@
 		}		
 
 		var Info = {
-			width: 1200,
+			width: 800,
 			height:800,
 			debug: false,
 			color: "0xE0D0C0", //solarized, replace with 0x888888 for neutral gray
@@ -40,7 +40,7 @@
 					jarPath: "./molvis-tools/jsmol/java",// this needs to point to where the java directory is.
 			jarFile: "JmolAppletSigned.jar",
 			isSigned: true,
-					script: "set zoomlarge false;set antialiasDisplay;load " + molFile + ";center",
+					script: "console;set zoomlarge false;set antialiasDisplay;load " + molFile + ";center",
 			//	serverURL: "http://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
 			serverURL: "./molvis-tools/jsmol/php/jsmol.php",
 			readyFunction: jmol_isReady,
@@ -52,8 +52,36 @@
 		}
 
 		$(document).ready(function() {
-			  $("#appdiv").html(Jmol.getAppletHtml("jmolApplet0", Info))
-		})
+			$("#appdiv").html(Jmol.getAppletHtml("jmolApplet0", Info))
+			$(window).load( function() {
+				$('#jmolApplet0_console')
+					.css({
+						'width' : "auto",
+						'top' : "0px",
+						'left' : "0px",
+						'background-color' : "gray",
+					});
+				$('#jmolApplet0_console_title').remove();
+				$('#jmolApplet0_console_label1').remove();
+				$('#jmolApplet0_console_buttondiv').remove();
+				$('#jmolApplet0_console_inputdiv').prependTo('#jmolApplet0_console');
+				$('#jmolApplet0_console_output').css({
+					'height' : "600px",
+					'width' : "400px",
+					'background-color' : "gray",
+					'font-family': "Menlo, monospace",
+					'font-size': "0.7em",
+				});
+				$('#jmolApplet0_console_input').css({
+					'height' : "200px",
+					'width' : "400px",
+					'background-color' : "#AA8866",
+					'font-family': "Menlo, monospace",
+					'font-size': "1.2em",
+					'color' : "#333333",
+				});
+   			});
+		});
 		var lastPrompt = 0;
 	</script>
 </head>
@@ -65,6 +93,16 @@
 			<td valign="top">
 				<div id="appdiv"></div>	
 				<!-- the actual JSmol view -->
+			</td>
+			<td class="console-container">
+				<div id="jmolApplet0_console" class="jmolConsole" style="display: block; z-index: 100008; position: relative; height: auto; width: auto; top: 0px; left: 0px; background-color: gray;">
+					<div id="jmolApplet0_console_inputdiv" style="position:relative;left:2px">
+						<textarea id="jmolApplet0_console_input" style="height: 200px; width: 400px; background-color: rgb(170, 136, 102); font-family: Menlo, monospace; font-size: 1.2em; color: rgb(51, 51, 51);"></textarea>
+					</div>
+					<div id="jmolApplet0_console_outputdiv" style="position:relative;left:2px">
+						<textarea id="jmolApplet0_console_output" style="height: 600px; width: 400px; background-color: gray; font-family: Menlo, monospace; font-size: 0.7em;"></textarea>
+					</div>
+				</div>
 			</td>
 		</tr>
 	</table>
