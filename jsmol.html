@@ -53,7 +53,12 @@
 
 		$(document).ready(function() {
 			$("#appdiv").html(Jmol.getAppletHtml("jmolApplet0", Info))
-			$(window).load( function() {
+
+			// SG: Yes, using setTimeout is really, really hacky, but is the 
+			// only way to ensure console is created before trying to modify it.
+			// Sorry.
+
+			setTimeout( function() {
 				$('#jmolApplet0_console')
 					.css({
 						'width' : "auto",
@@ -80,7 +85,7 @@
 					'font-size': "1.2em",
 					'color' : "#333333",
 				});
-   			});
+   			}, 200);
 		});
 		var lastPrompt = 0;
 	</script>
