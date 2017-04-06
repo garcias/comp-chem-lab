@@ -15,6 +15,11 @@
 		userOptions = {
 			width:  900,
 			height: 600,
+			color: "0xE0D0C0",
+				// neutral beige: "0xE0D0C0"
+				// solarized light: "0xEEE8D5"
+				// neutral gray: "0x888888"
+				// solarized dark: "0x586E75"
 		}
 		
 		// path to file you want to load
@@ -38,7 +43,7 @@
 			width: userOptions.width  * 2/3,
 			height:userOptions.height * 1,
 			debug: false,
-			color: "0xE0D0C0", //solarized, replace with 0x888888 for neutral gray
+			color: userOptions.color, 
 			addSelectionOptions: false, // creates search console
 			use: "HTML5",   // JAVA HTML5 WEBGL are all options
 					j2sPath: "./molvis-tools/jsmol/j2s", // this needs to point to where the j2s directory is.
