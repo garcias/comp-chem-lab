@@ -28,9 +28,38 @@ You can send a SMILES string to NIH Cactus, which generates and sends back a 3D 
 
 ## `write`
 
-Write can export a model information in different ways: as chemically meaningful data, an rendered 3D scene, or a simple image. 
+Write can export a model information in different ways: as chemically meaningful data, a 3D scene, or a rendered image. 
+
+You can write to a variety of chemical information formats to the console output. Use the `console clear` command before writing, so you don't get other output mixed in. The following exports the model as a MOL file, Cartesian coordinates, Chemical Markup Language, JSON, and Structured Data File. 
+
+    console clear
+    write mol
+    write xyz
+    write cml
+    write json
+    write sdf
+
+Once the data are written to output, you can copy and paste to desired tool or file. To save directly to a local file, add a file name afterward in quotes.
+
+    write cml "caffeine.cml"
+    
+For a 3D scene, specify the desired format. Jmol supports Maya ASCII, POV-Ray, and VRML, among others.
+
+    write maya caffeine.ma
+    write povray caffeine.pov
+    write vrml caffeine.vrml
+
+Finally, Jmol can render the model as an image in common formats, such as png, pdf, and jpg. Use the keyword `image`, the width and height in pixels, and the desired format. If you leave out the width and height, Jmol will use the currently displayed resolution. Jmol can also infer the format from the file-name extension, as in the last example.
+
+    write image 600 600 png caffeine.png
+    write image pdf caffeine.pdf
+    write caffeine.jpg 
 
 
 ## `minimize`
 
 In the process of building a molecule, you might find that you stretched a bond too far, distorted bond angles, or the conformation is too compact. The `minimize` command will use an force-field method to approximately optimize the structure.
+
+## `set picking`
+
+Set picking allows you to control what mouse clicks do in the model.
