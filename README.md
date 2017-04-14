@@ -19,6 +19,11 @@ Get the `gamess-built` tarball built by your institution or department. Move it 
     $ cd ..
     $ rm -rf install-gamess
 
+`/optional` contains a convenience script named `rungamess` that students use instead of `rungms`. It takes only one argument, the name of an `.inp` file and creates an `.out` file of the same base name. It also cleans out temporary files created by the run. To install, simply move into GAMESS directory. To use, simply give the name of the input file.
+
+    $ mv optional/rungamess ~/gamess/
+    $ rungamess hfopt.inp
+
 ## Installing optional tools
 
 ### Cloud9-VNC
