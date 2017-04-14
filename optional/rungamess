@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# takes .inp file as argument, creates .out of same base name
+INP=$1
+JOB=${1%.inp}
+OUT=$JOB.out
+
+rungms $INP > $OUT
+
+echo "rm ~/tmp/$JOB.*"
+rm ~/tmp/$JOB.*
+
+mesg=$(grep --color=never -i "EXECUTION OF GAMESS TERMINATED" $OUT)
+echo $OUT: $mesg
