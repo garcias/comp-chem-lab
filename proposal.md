@@ -38,7 +38,7 @@ To check names of a compound by CID
 
 To look up a property of a compound by CID
 
-    curl https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/8549/property/MolecularWeight/txt
+    curl https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/8549/property/MolecularWeight/txt;
 
 To grab mol file from pubchem with cid
 

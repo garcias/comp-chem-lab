@@ -10,11 +10,11 @@ Load a model of water from a MOL file, containing coordinates and bond connectiv
 
     load H2O.mol
 
-Load all models from a GAMESS output file of a Hessian calculation, containing the coordinates, bonds, molecular orbitals, and normal mode vibrations of ethane.
+Load all models from a GAMESS output file, containing the coordinates, bonds, and molecular orbitals of ethane. If it was a Hessian calculation, also loads normal mode vibrations and frequencies, which can be animated.
 
     load ethane-1.out
 
-To retrieve a model form PubChem, prefix its PubChem name or id with a colon (`:`). For RCSB, prefix its PDB id with equals (`=`). The following commands load caffeine (from PubChem), paracetamol (PubChem 1983), and streptavidin (PDB 1STP).
+To retrieve a model from PubChem, prefix its PubChem name or id with a colon (`:`). For RCSB, prefix its PDB id with equals (`=`). The following commands load caffeine (from PubChem), paracetamol (PubChem 1983), and streptavidin (PDB 1STP).
 
     load :caffeine
     load :1983
@@ -76,13 +76,27 @@ For convenience in working with selections, you can turn selection halos `on` or
 
 ## `label`
 
-To show a reference label for each atom, use `label on`. By default, the label is of the form "*{chemical symbol}{number}* #*{number}*", which is a bit unwieldy. Instead `label %a` will give only chemical symbol and atom number. And sometimes they don't show up very well, so use the `color` command with the `labels` option to change their color.
+To show a reference label for each atom, use `label on`. By default, the label is of the form "*{chemical symbol}{number}* #*{number}*", which is a bit unwieldy. Instead `label %a` will give only chemical symbol and atom number. And sometimes they don't show up very well, so use the `color` and labeloffset commands with the `labels` option to change their color and offsets.
 
 ```
     labels on
     labels %a
     color labels black
+    set labeloffset 15 15
 ```
+
+## `measure`
+
+Measurements in Jmol are sensitive to the number of atoms you specify. `measure` requires atom expressions to be in parentheses.
+
+```Java
+    measure (H1) (C7)             // bond length between C7 and C8
+    measure (H1) (C7) (C8)        // bond angle with C8 as central
+    measure (H1) (C7) (C8) (H12)  // torsion angle along C7-C8 axis
+                                  // between planes H1-C7-C8 and C7-C8-H12
+    measure list                  // prints list of measurements to output
+```
+
 
 ## `select`
 
@@ -90,36 +104,94 @@ When editing or studying a molecule, you may need to mark a subset of atoms for 
 
 To target atoms by element, specify the element name. Alternatively, you can use the elemental symbol preceded by an underscore, with mass number to indicate isotope:
 
-- `select carbon`: selects all C atoms
-- `select deuterium`: selects all D atoms
-- `select _31P`: selects all P-31 atoms
+```Java
+    select carbon     // selects all C atoms
+    select deuterium  // selects all D atoms
+    select _31P       // selects all P-31 atoms
+```
 
 To target atoms by property, specify a logical test involving the property. Common properties are `atomno`, `elemno`, `atomx`, `bondcount`, `mass`, `shape`, `valence`:
 
-- `select atomno = [1,4]`: select two atoms, numbered 1 and 4
-- `select elemno < 7`: select all atoms from H to C
-- `select bondcount = 3`: select all atoms with three bonds, including sp<sup>2</sup> C and sp<sup>3</sup> N.
-- `select mass < 15`: select all atoms lighter than 15, including nitrogen-14, carbon-14, carbon-12, etc.
-- `select shape = "trigonal planar"`: select all sp<sup>2</sup>-hybridized atoms
-- `select valence == 3`: select B, N, P, *etc*
+```Java
+    select atomno = [1,4]  // select two atoms, numbered 1 and 4
+    select elemno < 7      // select all atoms from H to C
+    select bondcount = 3   // select all atoms with three bonds, including sp2 C and sp3 N
+    select mass < 15       // select atoms lighter than 15, including nitrogen-14, carbon-14, carbon-12, etc.
+    select shape = "trigonal planar"      // select sp2-hybridized atoms
+    select valence == 3    // select B, N, P, *etc*
+```
 
-To extend or restrict an existing selection, use `select add` and `select remove`.
+`select add` and `select remove` allow you to extend or restrict an existing selection.
 
-- `select _C; select add _H`: selects all C and H atoms
-- `select _C; select remove C3`: selects all C except for C3
+```Java
+    select _C; select add _H     // selects all C and H atoms
+    select _C; select remove C3  // selects all C except for C3
+```
 
 By default, each atom is assigned a unique label of the form *{chemical symbol}{atom number}*, e.g. `C5`. To target a specific atom, use its label.
 
-- `select C3, C4, C8`: selects only those carbon atoms
+```Java
+    select C3, C4, C8  // selects only those carbon atoms
+```
+
+`define` allows you to designate a group to use in selection.
+
+```Java
+    define ~a C8,C9      // define C8 and C9 as an entity
+    select * and not ~a  // select all atoms except for C8 and C9
+```
 
 ## Manipulating structures
 
 Once atoms are selected, you can change their position, bonding, or appearance.
 
-- `select C8 or C9; connect single`: create a single bond between carbons 8 and 9
-- `color purple`: color atoms and bond purple
-- `select C8 or C9; connect delete`: remove the bond
-- `define ~a C8,C9`: define C8 and C9 as an entity
-- `select * and not ~a`: select all atoms except for C8 and C9
-- `rotateselected {C8} {C9} 30`: rotate molecule about the C8-C9 bond by 30 degrees
-- 
+`connect` creates bonds between atoms in a selection.
+
+```Java
+    select C8,C9               // select carbons 8 and 9
+    connect (selected) single  // add single bond between selected atoms
+    connect single             // selected is implied otherwise
+    connect {C8} {C9}          // same effect but without selection
+    connect delete             // remove the bond
+```
+
+`color` acts on the entire selection, including bonds
+
+```Java
+    color purple  # color atoms and bond purple
+```
+
+`rotateselected` allows you to apply `rotate` operations to just the selection, which can be useful for exploring conformations.
+
+```Java
+    rotate {C8} {C9} 30                // rotate entire structure about the C8-C9 bond by 30 degrees
+    rotateselected {C8} {C9} 30        // rotate selected atoms only about the C8-C9 bond by 30
+    rotateselected {C8} {C9} spin 100  // spin the selected atoms about the C8-C9 bond
+```
+
+
+# `spin`
+
+First make sure center the coordinate system with `centerat average`. 
+
+Specify the axis of rotation and optionally the rate of rotation. A rate of 240 is roughly a half turn per second.
+
+```Java
+    spin x 120
+    spin off
+```
+
+# `modelKitMode`
+
+Initiates mode in which clicking on an atom changes it to whatever atom is specified by `set picking`.
+
+
+# Some useful scripts
+
+- On startup, turn on selection halos, set labels to {element name}#, and color labels black.
+
+  ```Java
+      selectionHalos; labels %a; color labels black; set labeloffset 15 15
+      background [xddd8c5]  // soda solarized
+  ```
+
